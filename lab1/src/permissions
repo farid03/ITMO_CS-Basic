@@ -1,0 +1,29 @@
+# пункт 2
+cd /home/s313302/lab0
+cd clamperl3
+  chmod 644 snover
+  chmod u=rwx,g=wx,o=rw purrloin
+  chmod u-rwx,g-rwx,g=rw clefairy
+
+cd ..
+  chmod 335 clamperl3
+  chmod 440 grovyle1
+  chmod u=r,g-rwx,o=r spearow3
+  chmod 373 stoutland3
+
+cd stoutland3
+  chmod u=wx,g=x,o=w torchic
+  chmod 005 axew
+  chmod u=rw,g=w,o-rwx arbok
+
+cd ..
+  chmod 600 tyrogue0
+  chmod a=rwx wartortle2
+
+cd wartortle2
+  chmod u=rw,g=w,o=w stoutland
+  chmod 750 umbreon
+  chmod 440 snorunt
+  chmod 064 pikachu
+  chmod 520 steelix
+  chmod 005 ponyta

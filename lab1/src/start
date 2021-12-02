@@ -1,0 +1,7 @@
+# запуск всех пунктов подряд
+cd /home/s313302/scripts
+sh scriptopd1
+sh permissions
+sh copyAndLink
+sh sort
+sh delete

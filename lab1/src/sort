@@ -1,0 +1,16 @@
+# пункт 4
+cd /home/s313302/lab0/clamperl3
+  wc -l snover clefairyS 2>/dev/null | sort -rnk1
+
+cd ..
+cd wartortle2
+  ls -R 2>&1 | sort
+
+cd ..
+  cat *n */*n */*/*n */*/*/*n 2>&1 | sort
+
+ls -plR /home/s313302/lab0 2>/dev/null | head -n4 | sort -k7r
+
+ls /home/s313302/lab0/stoutland3 2>/dev/null | wc >/tmp/ccountt
+
+ls -lR /home/s313302/lab0 2>/tmp/errorss | grep sto | sort -k7r

@@ -1,0 +1,104 @@
+	ORG	0x2
+V1:	WORD	$INT1, 0x180
+	
+A:	WORD	18
+B:	WORD	14
+COUNT:	WORD	0x0	; целая часть деления
+RE:	WORD	0x0	; остаток от деления
+ODZpl:	WORD	20
+ODZmi:	WORD	0xFFEC
+ISNEGRES:	WORD	0
+
+START:	EI
+	LD	B
+	PUSH
+	CALL	checkODZ	; проверка ОДЗ
+	POP
+	LD	A
+	BEQ	EXIT	; если А равно 0
+	PUSH
+	CALL	checkODZ
+	POP
+	LD	A
+	CALL	ISNEG
+	LD	B
+	CALL	ISNEG
+
+	LD	A
+	CALL	ABS
+	ST	A
+	LD	B
+	CALL	ABS
+	ST	B
+
+WHILE:	LD	A
+	SUB	B
+	ST	A
+	BEQ	ENDLN1
+	BMI	ENDLN2
+	LD	COUNT
+	INC
+	ST	COUNT
+	JUMP	WHILE
+
+ENDLN2:	ADD	B	; окончание в случае наличия остатка
+	ST	RE
+	JUMP	ENDLN
+
+ENDLN1:	LD	COUNT	; окончание в случае, если остаток 0
+	INC
+	ST	COUNT
+ENDLN:	LD	ISNEGRES
+	BEQ	EXIT
+	LD	COUNT
+	NEG
+	ST	COUNT
+	LD	RE
+	NEG
+	ST	RE
+EXIT:	CLA
+	OUT	0x2
+	HLT
+
+
+I1:	LD	#0x1	; исключительный случай 1
+	INT	1	; (деление на 0)
+	HLT
+
+I2:	LD	#0x2	; исключительный случай 2
+	INT	1	; (выход за границы ОДЗ)
+	HLT
+
+
+checkODZ:	LD	&1
+	BEQ	I1	; подпрограмма, проверяющая ОДЗ
+	BPL	PLUSB
+NEGB:	CMP	ODZmi
+	BMI	I2
+	RET	
+
+PLUSB:	CMP	ODZpl
+	BEQ	ALL
+	BPL	I2
+ALL:	RET
+
+ISNEG:	BMI	ISTR
+	RET
+ISTR:	LD	ISNEGRES
+	BEQ	FLAGTRUE
+	CLA
+	ST	ISNEGRES
+	RET
+FLAGTRUE:	INC
+	ST	ISNEGRES
+	RET
+
+ABS:	BMI	ABS1
+	RET
+ABS1:	NEG
+	RET
+
+	ORG	0x100
+INT1:	NOP		; обработка прерывания в случае
+	OUT	0x2	; возникновения исключительной ситуации
+	IRET

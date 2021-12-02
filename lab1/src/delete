@@ -1,0 +1,14 @@
+#Пунк номер 5 лабораторной работы 1
+chmod -R u=rwx /home/s313302/lab0
+
+rm -f /home/s313302/lab0/tyrogue0
+
+rm -f /home/s313302/lab0/wartortle2/steelix
+
+rm -f /home/s313302/lab0/Copy1*
+
+rm -f /home/s313302/lab0/clamperl3/clefairygrovy*
+
+rm -rf /home/s313302/lab0/clamperl3
+
+rmdir /home/s313302/lab0/wartortle2/umbreon

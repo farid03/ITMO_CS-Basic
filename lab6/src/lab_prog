@@ -1,0 +1,64 @@
+ORG 	0x4	;Инициализация векторов:
+V2:	WORD	$INT2, 0x180	   ;Вектор прерывания 1
+	ORG	0x6	
+V3:	WORD	$INT3, 0x180	   ;Вектор прерывания 1
+	ORG	0x0	
+X:	WORD	0x036;	;Ячейка X
+
+	ORG	0x040	
+START:	DI		
+	LD	#0xA	;Разрешить прерывания и вектор для ВУ2
+	OUT	5	
+	LD	#0xB	;Разрешить прерывания и вектор для ВУ3
+	OUT	7	
+WHILE:	DI		
+	LD	X	;Цикл
+	DEC
+	DEC		
+	DEC		
+	CMP	#0xD4	;Нижняя граница
+	BMI	LOAD1	
+	BR	SAVE1	
+LOAD1:	NOP		
+	LD	#0xD4	
+	NOP		
+SAVE1:	ST	X	
+	EI		
+	BR	WHILE	
+
+	ORG	0x060	
+INT3:	NOP		;Регистр PS сохранен
+	PUSH		;Сохранение AC
+	DI		
+	LD	X	;Реализация формулы:
+	ADD	X	
+	ADD	X	
+	ADD	#2
+	OUT	6	;Запись в DR ВУ3
+	EI		
+	POP		;Возврат AC
+	NOP		
+	IRET		;Возврат из прерывания
+
+INT2:	NOP		
+	PUSH		;Регистр PS сохранен
+	IN	4	
+	SXTB		
+	AND	X
+	PUSH		;Сохранение промежуточной операции
+	IN	4
+	SXTB
+	OR	X
+	NOT
+	OR	&0
+	CMP	#0x29	;Верхняя граница
+	BPL	LOAD2	
+	CMP	#0xD4	;Нижняя граница
+	BMI	LOAD2	
+	BR	SAVE2	
+LOAD2:	LD	#0x29	
+SAVE2:	ST	X	
+	POP		;Удаление ячейки промежуточной операции
+	POP		;Возврат AC
+	NOP		
+	IRET		;Возврат из прерывания

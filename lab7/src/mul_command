@@ -1,0 +1,32 @@
+E0  mw 0088009208                   ~0 + SP ? SP, AR
+E1  mw 0020001400                   1 ? BR
+E2  mw 0010C11010                   extend sign AC(0..7) ? AC, N, Z, V
+E3  mw 80E6081040                   if PS(N) = 0 then GOTO @ E6
+E4  mw 0010E09610                   ~AC + 1 ? AC, N, Z, V, C
+E5  mw 0020001120                   ~0 + BR ? BR
+E6  mw 0001811001                   extend sign DR(0..7) ? DR, N, Z
+E7  mw 80EA801001                   if DR(7) = 0 then GOTO @ EA
+E8  mw 0001E09501                   ~DR + 1 ? DR, N, Z, V, C
+E9  mw 0020001120                   ~0 + BR ? BR
+EA  mw 0200000000                   DR ? MEM(AR)
+EB  mw 0088009208                   ~0 + SP ? SP, AR
+EC  mw 0001009020                   BR ? DR
+ED  mw 0200000000                   DR ? MEM(AR)
+EE  mw 0088009408                   SP + 1 ? SP, AR
+EF  mw 0100000000                   MEM(AR) ? DR
+F0  mw 0020800000                   0 ? BR, N, Z
+F1  mw 80F3011010                   if AC(0) = 0 then GOTO @ F3 (сдвиг)
+F2  mw 0020009021                   DR + BR ? BR
+F3  mw 0001020001                   ASL(DR) ? DR
+F4  mw 0010880010                   ASR(AC) ? AC, N, Z
+F5  mw 81F2011010                   if AC(0) = 1 then GOTO @ F2
+F6  mw 81F8041040                   if PS(Z) = 1 then GOTO @ F8 
+F7  mw 80F3011010                   if AC(0) = 0 then GOTO @ F3 (сдвиг)
+F8  mw 0088009208                   ~0 + SP ? SP, AR
+F9  mw 0100000000                   MEM(AR) ? DR
+FA  mw 0000801001                   DR, N, Z
+FB  mw 80FD041040                   if PS(Z) = 0 then GOTO INT @ FD
+FC  mw 0020E09620                   ~BR + 1 ? BR, N, Z, V, C
+FD  mw 0010E09020                   BR ? AC, N, Z
+FE  mw 0088009408                   SP + 1 ? SP, AR
+FF  mw 80C4101040                   GOTO INT @ C4

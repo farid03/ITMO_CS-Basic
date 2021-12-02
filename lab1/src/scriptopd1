@@ -1,0 +1,78 @@
+# пункт 1
+cd /home/s313302
+
+mkdir lab0
+
+cd lab0
+  mkdir clamperl3
+  mkdir stoutland3
+  mkdir wartortle2
+  touch grovyle1
+  touch spearow3
+  touch tyrogue0
+
+cd clamperl3
+  touch snover
+  mkdir purrloin
+  touch clefairy
+
+cd ..
+cd stoutland3
+  mkdir torchic
+  touch axew
+  touch arbok
+
+cd ..
+cd wartortle2
+  touch stoutland
+  mkdir umbreon
+  touch shorunt
+  touch pikachu
+  touch steelix
+  touch ponyta
+
+echo 'satk=6 sdef=6 spd=4' > ../clamperl3/snover
+
+echo 'Развитые способности Friend' > ../clamperl3/clefairy
+echo 'Guard' >> ../clamperl3/clefairy
+
+cd ..
+
+  echo 'Возможности Overland=10 Surface=2 Jump=5 Power=2' > grovyle1
+  echo 'Intelligence=3 Sprouter=0' >> grovyle1
+
+  echo 'Тип покемона NORMAL' > sperow3
+  echo 'FLYING' >> sperow3
+
+cd stoutland3
+
+  echo 'Развитые способности Unnerve' > axew
+
+  echo 'satk=7 sdef=8' > arbok
+  echo 'spd=8' >> arbok
+
+cd ..
+
+  echo 'weigth=46.3 height=28.0 etk=4 def=4' > tyrogue0
+
+cd wartortle2
+
+  echo 'Тип' > stoutland
+  echo 'диеты Omnivore' >> stoutland
+
+  echo 'Способности Freezing Point Innet Focex Ice' > snorunt
+  echo 'Body' >> snorunt
+
+  cat > pikachu << EOF
+Ходы Body Slam Conter Covet Defense Curl Double-Edge
+Dynamicpunch Focus Punch Hrlping Hand Iron Tail Knock Off Magnet Rise
+Mega Kick Mega Punch Mud-Slap Rollout Seismic Toss Shock Wave Signal
+Beam Sleep Talk Snore Swift Thunderpunch Uproar
+EOF
+
+  cat > steelix << EOF
+satk=6 sdef=7
+spd=3
+EOF
+
+  echo 'Живет Grassland' > ponyta

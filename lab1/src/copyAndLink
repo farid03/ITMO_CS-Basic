@@ -1,0 +1,25 @@
+# пункт 3
+cd /home/s313302
+  chmod -R u=rwx lab0
+
+cd lab0
+
+  cp -rf stoutland3 clamperl3/purrloin
+
+  ln -s spearow3 clamperl3/clefairyspearow
+
+  chmod u=rwx stoutland3/axew
+
+  chmod u=rwx wartortle2/pikachu
+
+  cat /home/s313302/lab0/stoutland3/axew /home/s313302/lab0/wartortle2/pikachu > tyrogue0_77
+
+  cp grovyle1 /home/s313302/lab0/clamperl3/purrloin
+
+  ln -s clamperl3 Copy_100
+
+  ln grovyle1 /home/s313302/lab0/clamperl3/clefairygrovyle
+
+  cat tyrogue0 > /home/s313302/lab0/wartortle2/pikachutyrogue
+
+sh /home/s313302/scripts/permissions
